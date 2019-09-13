@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({
     name: String,
-    friends: [this],
+    friends: [this], //this = userSchema
     messages: [message.schema]
 })
 

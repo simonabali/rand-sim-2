@@ -38,5 +38,6 @@ Currently anyone can login as a user given the username. Instead, a user should 
 
 # Known issues
 - When a user presses "Send", the entire conversation disappears
-- A user can send a message to a user that doesn't exist; causes a server crash
+- A user can send a message to a user that doesn't exist; causes a server crash 
+(server not crashing anymore, butwe can still send message to user that does not exist)
 - Using `username` instead of mongo ID to look for users

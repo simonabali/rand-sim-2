@@ -16,10 +16,14 @@
         <div class="messages-area"></div>
     </div>
 
+
+
     <script id="login-template" type="text/x-handlebars-template">
         {{#if isLoggedIn}}
             <span>Hi {{username}}</span>
             <div class="button" onclick=logOut()>Logout</div>
+            <div><input id= "addFriend" placeholder = "Add a friend"/>
+            <button onclick= addFriend()>Add Friend</button></div>
         {{else}}
             <input id="username" placeholder="Username">
             <div class="button" onclick=logIn()>Login</div>

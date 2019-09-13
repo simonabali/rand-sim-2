@@ -23,9 +23,14 @@ router.post('/message', function (req, res) {
     const message = new Message({ sender: payload.sender, text: payload.text })
 
     User.findOne({ name: payload.to }, function (err, user) {
-        user.messages.push(message)
-        user.save()
-        res.end()
+        if (user) {
+            user.messages.push(message)
+            user.save()
+            res.end()
+        }
+        else{
+            res.send("User does not exist")
+        }
     })
 })
 
