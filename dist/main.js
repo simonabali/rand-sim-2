@@ -6,6 +6,11 @@ LOGIN_AREA = "login-area"
 MESSAGES_TEMPLATE = "messages-template"
 MESSAGE_AREA = "messages-area"
 
+FRIENDS_TEMPLATE = "friends-template"
+FRIEND_AREA = "friends-area"
+
+
+
 const render = (templateID, data, destination) => renderer.render(templateID, data, destination)
 let user
 
@@ -18,9 +23,26 @@ const logIn = function () {
     })
 }
 
+
+
 const addFriend = function(){
     const friendName = $("#addFriend").val()
-    user.addFriend(friendName)
+    let userName = user.name
+    user.addFriend(friendName).then(getFriends(userName))
+    //.then(render(FRIENDS_TEMPLATE, res, FRIEND_AREA))
+}
+
+const getFriends = function(user){
+    return $.ajax({
+        method:"GET",
+        url:`/friends/${user}`,
+        success: function(res){
+            render(FRIENDS_TEMPLATE, res.body.friends, FRIEND_AREA)
+        },
+        error: function(xhr,text,error){
+            console.log(text)
+        }
+    })
 }
 
 const logOut = function () {

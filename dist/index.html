@@ -14,9 +14,21 @@
     <div id="container">
         <div class="login-area"></div>
         <div class="messages-area"></div>
+        <div class="friends-area"></div>
     </div>
 
 
+    <script id="friends-template" type="text/x-handlebars-template">
+        <ul>
+            {{#each friend}}
+            <li>
+                <a href="">
+                    {{this}}
+                </a>
+            </li>
+            {{/each}}
+        </ul>        
+    </script>
 
     <script id="login-template" type="text/x-handlebars-template">
         {{#if isLoggedIn}}

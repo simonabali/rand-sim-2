@@ -39,8 +39,18 @@ router.put('/friend', function(req, res){
     let currentUser = req.body.currentUser 
     let friendToAdd = req.body.friendToAdd
     User.findOneAndUpdate({"name": currentUser}, {$push: {"friends": friendToAdd}}, {new: true}, function(error, res){
-        console.log(res)
+        console.log("Updated the current user")
     })
+    User.findOneAndUpdate({"name": friendToAdd}, {$push: {"friends": currentUser}}, {new: true}, function(error, res){
+        console.log("Updated the friend")
+    })
+    res.end()
 })
 
+router.get("/friends/:user", function(req,res){
+    let user = req.params.user
+    User.find({"name":user}, {"friends":1, "_id": 0}, function(err, response){
+        res.send(response)
+    } )
+})
 module.exports = router

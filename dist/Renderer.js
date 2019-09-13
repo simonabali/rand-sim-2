@@ -1,5 +1,6 @@
 class Renderer {
     render(templateID, data, destination) {
+        console.log(data)
         $(`.${destination}`).empty()
         const source = $(`#${templateID}`).html()
         const template = Handlebars.compile(source)
@@ -11,4 +12,5 @@ class Renderer {
     clear(){
         $(".messages-area").empty()
     }
+
 }
