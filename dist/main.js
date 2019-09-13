@@ -18,6 +18,11 @@ const logIn = function () {
     })
 }
 
+const addFriend = function(){
+    const friendName = $("#addFriend").val()
+    user.addFriend(friendName)
+}
+
 const logOut = function () {
     user = undefined
     render(LOGIN_TEMPLATE, { isLoggedIn: false }, LOGIN_AREA)

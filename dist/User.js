@@ -8,9 +8,8 @@ class User {
     }
 
    addFriend (user) {
-        debugger
         if (user){
-            let data = {"currentUser": this.name, "friendToAdd": user.name}
+            let data = {"currentUser": this.name, "friendToAdd": user}
             $.ajax({
                 method: "PUT",
                 url: "/friend" ,
