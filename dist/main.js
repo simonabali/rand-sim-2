@@ -25,21 +25,23 @@ const logIn = function () {
 
 
 
-const addFriend = function(){
+const addFriend = function () {
     const friendName = $("#addFriend").val()
     let userName = user.name
     user.addFriend(friendName).then(getFriends(userName))
     //.then(render(FRIENDS_TEMPLATE, res, FRIEND_AREA))
 }
 
-const getFriends = function(user){
+const getFriends = function (user) {
     return $.ajax({
-        method:"GET",
-        url:`/friends/${user}`,
-        success: function(res){
-            render(FRIENDS_TEMPLATE, res.body.friends, FRIEND_AREA)
+        method: "GET",
+        url: `/friends/${user}`,
+        success: function (res) {
+            let data = {}
+            res.forEach(r => data.push(r))
+            render(FRIENDS_TEMPLATE, data, FRIEND_AREA)
         },
-        error: function(xhr,text,error){
+        error: function (xhr, text, error) {
             console.log(text)
         }
     })

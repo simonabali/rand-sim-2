@@ -49,8 +49,9 @@ router.put('/friend', function(req, res){
 
 router.get("/friends/:user", function(req,res){
     let user = req.params.user
-    User.find({"name":user}, {"friends":1, "_id": 0}, function(err, response){
-        res.send(response)
+    console.log(user)
+    User.findOne({"name":user}, {"friends":1, "_id": 0}, function(err, response){
+        res.send(response.friends)
     } )
 })
 module.exports = router
