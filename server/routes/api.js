@@ -34,4 +34,13 @@ router.post('/message', function (req, res) {
     })
 })
 
+router.put('/friend', function(req, res){
+    console.log(req.body)
+    let currentUser = req.body.currentUser 
+    let friendToAdd = req.body.friendToAdd
+    User.findOneAndUpdate({"name": currentUser}, {$push: {"friends": friendToAdd}}, {new: true}, function(error, res){
+        console.log(res)
+    })
+})
+
 module.exports = router
